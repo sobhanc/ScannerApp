@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "605960458719",
+    "firebase_url": "https://thescannerapp-5802a.firebaseio.com",
+    "project_id": "thescannerapp-5802a",
+    "storage_bucket": "thescannerapp-5802a.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:605960458719:android:45643721f14a5c423ff46a",
+        "android_client_info": {
+          "package_name": "com.scanlibrary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "605960458719-96jls5r3kpqo5f6f26gj5rdtg1qf2v5m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC__239HcG9frkUewjnCpRuRY0lVXVqJRE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "605960458719-96jls5r3kpqo5f6f26gj5rdtg1qf2v5m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

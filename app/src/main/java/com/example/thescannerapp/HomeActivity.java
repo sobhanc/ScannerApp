@@ -10,18 +10,30 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.provider.MediaStore;
+import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
+
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.FileProvider;
+
+import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.ml.vision.FirebaseVision;
+import com.google.firebase.ml.vision.common.FirebaseVisionImage;
+import com.google.firebase.ml.vision.label.FirebaseVisionImageLabel;
+import com.google.firebase.ml.vision.label.FirebaseVisionImageLabeler;
 import com.scanlibrary.ScanActivity;
 import com.scanlibrary.ScanConstants;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
 
@@ -32,6 +44,26 @@ public class HomeActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
+
+        //Code for image labeling starts here
+        Button choose;
+        TextView result;
+        ImageView imageView;
+
+        result = findViewById(R.id.textView);
+        imageView = findViewById(R.id.imagePost);
+        choose = findViewById(R.id.button5);
+        choose.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent();
+                i.setType("image/*");
+                i.setAction(Intent.ACTION_GET_CONTENT);
+                startActivityForResult(Intent.createChooser(i,"select images"), 121);
+            }
+        });
+
+
     }
 
     public void openCamera(View v) {
@@ -58,6 +90,8 @@ public class HomeActivity extends AppCompatActivity {
         imageView = findViewById(R.id.imagePost);
         Button btnShare;
         btnShare = findViewById(R.id.button3);
+        final TextView result;
+        result = findViewById(R.id.textView);
 
 
 
@@ -91,7 +125,53 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        //code for image labeling
+        if (requestCode == 121) {
+            imageView.setImageURI(data.getData());
+
+            FirebaseVisionImage image;
+            try {
+                image = FirebaseVisionImage.fromFilePath(getApplicationContext(), data.getData());
+                FirebaseVisionImageLabeler labeler = FirebaseVision.getInstance()
+                        .getOnDeviceImageLabeler();
+
+                labeler.processImage(image)
+                        .addOnSuccessListener(new OnSuccessListener<List<FirebaseVisionImageLabel>>() {
+                            @Override
+                            public void onSuccess(List<FirebaseVisionImageLabel> labels) {
+                                // Task completed successfully
+                                // ...
+                                for (FirebaseVisionImageLabel label: labels) {
+                                    String text = label.getText();
+                                    String entityId = label.getEntityId();
+                                    float confidence = label.getConfidence();
+                                    result.setMovementMethod(new ScrollingMovementMethod());
+                                    result.append(text+"   "+"\n");
+                                }
+                            }
+
+
+
+                        })
+                        .addOnFailureListener(new OnFailureListener() {
+                            @Override
+                            public void onFailure(@NonNull Exception e) {
+                                // Task failed with an exception
+                                // ...
+                            }
+                        });
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
     }//ends onActivityResult
+
+
+
+
+
+
 
 
 

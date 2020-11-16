@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/home_background2"
     android:id="@id/layout"
     tools:context=".HomeActivity"
     android:gravity="center">
@@ -12,17 +11,10 @@
 
     <Button
         android:id="@+id/button"
-        android:layout_width="108dp"
-        android:layout_height="48dp"
-        android:background="@drawable/login_button4"
-        android:drawableLeft="@drawable/camera_icon_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:onClick="openCamera"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingBottom="5dp"
         android:text="Camera"
-        android:textColor="#ffffff"
-
         app:layout_constraintBottom_toTopOf="@+id/button2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
@@ -32,19 +24,14 @@
 
     <Button
         android:id="@+id/button2"
-        android:layout_width="108dp"
-        android:layout_height="48dp"
-        android:background="@drawable/login_button4"
-        android:drawableLeft="@drawable/gallery_icon_white"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="204dp"
         android:onClick="openGallery"
-        android:paddingLeft="12dp"
-        android:paddingRight="12dp"
-        android:paddingBottom="5dp"
         android:text="Gallery"
-        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
@@ -56,22 +43,33 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        tools:srcCompat="@tools:sample/avatars"
-        />
+        tools:srcCompat="@tools:sample/avatars" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
-        android:layout_height="48dp"
-        android:layout_marginBottom="76dp"
-        android:background="@drawable/login_button4"
-        android:drawableLeft="@drawable/share_icon_white"
-        android:paddingLeft="12dp"
-        android:paddingRight="16dp"
-        android:paddingBottom="5dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:text="Share Image"
-        android:textColor="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/imagePost"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="295dp"
+        android:layout_height="152dp"
+        android:scrollbars="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Choose"
+        app:layout_constraintBottom_toTopOf="@+id/textView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
