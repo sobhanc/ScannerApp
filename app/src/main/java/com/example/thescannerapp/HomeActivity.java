@@ -92,6 +92,8 @@ public class HomeActivity extends AppCompatActivity {
         btnShare = findViewById(R.id.button3);
         final TextView result;
         result = findViewById(R.id.textView);
+        Button btnClearTxt;
+        btnClearTxt = findViewById(R.id.clearText);
 
 
 
@@ -164,6 +166,14 @@ public class HomeActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
+
+        //code for clearing textView text
+        btnClearTxt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                result.setText("");
+            }
+        });
 
     }//ends onActivityResult
 
