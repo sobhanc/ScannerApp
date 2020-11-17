@@ -2,12 +2,18 @@ package com.example.thescannerapp;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
+import android.graphics.pdf.PdfDocument;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.text.method.ScrollingMovementMethod;
@@ -31,6 +37,7 @@ import com.google.firebase.ml.vision.label.FirebaseVisionImageLabeler;
 import com.scanlibrary.ScanActivity;
 import com.scanlibrary.ScanConstants;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.List;
@@ -63,7 +70,11 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    public void pickImage(View v) {
+        Intent myIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        startActivityForResult(myIntent, 120);
     }
 
     public void openCamera(View v) {
@@ -94,6 +105,8 @@ public class HomeActivity extends AppCompatActivity {
         result = findViewById(R.id.textView);
         Button btnClearTxt;
         btnClearTxt = findViewById(R.id.clearText);
+        Button btnConvert;
+        btnConvert = findViewById(R.id.button4);
 
 
 
@@ -165,6 +178,52 @@ public class HomeActivity extends AppCompatActivity {
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        }
+
+        if (requestCode == 120 && resultCode == RESULT_OK && data!=null) {
+            Uri selectedImageUri = data.getData();
+            String[] filePath = {MediaStore.Images.Media.DATA};
+            Cursor cursor = getContentResolver().query(selectedImageUri, filePath, null, null, null);
+            cursor.moveToFirst();
+
+            int columnIndex = cursor.getColumnIndex(filePath[0]);
+            String myPath = cursor.getString(columnIndex);
+            cursor.close();
+            Bitmap bitmap = BitmapFactory.decodeFile(myPath);
+
+            imageView.setImageBitmap(bitmap);
+
+            PdfDocument pdfDocument = new PdfDocument();
+            PdfDocument.PageInfo pi = new PdfDocument.PageInfo.Builder(bitmap.getWidth(), bitmap.getHeight(),1).create();
+
+            PdfDocument.Page page = pdfDocument.startPage(pi);
+            Canvas canvas = page.getCanvas();
+            Paint paint = new Paint();
+            paint.setColor(Color.parseColor("#FFFFFF"));
+            canvas.drawPaint(paint);
+
+            bitmap = Bitmap.createScaledBitmap(bitmap, bitmap.getWidth(), bitmap.getHeight(),true);
+            paint.setColor(Color.BLUE);
+            canvas.drawBitmap(bitmap,0,0,null);
+
+            pdfDocument.finishPage(page);
+
+            //save bitmap img
+            File root = new File(Environment.getExternalStorageDirectory(), "PDF FOLDER");
+            if (!root.exists()) {
+                root.mkdir();
+            }
+            File file = new File(root,"picture.pdf");
+
+            try {
+                FileOutputStream fileOutputStream = new FileOutputStream(file);
+                pdfDocument.writeTo(fileOutputStream);
+            } catch(IOException e) {
+                e.printStackTrace();
+            }
+
+            pdfDocument.close();
+
         }
 
         //code for clearing textView text
