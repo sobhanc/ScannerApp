@@ -17,6 +17,7 @@ import android.os.Environment;
 import android.os.StrictMode;
 import android.provider.MediaStore;
 import android.text.method.ScrollingMovementMethod;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -27,9 +28,11 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.FileProvider;
+import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.firebase.ml.vision.FirebaseVision;
 import com.google.firebase.ml.vision.common.FirebaseVisionImage;
 import com.google.firebase.ml.vision.label.FirebaseVisionImageLabel;
@@ -67,6 +70,31 @@ public class HomeActivity extends AppCompatActivity {
                 i.setType("image/*");
                 i.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(i,"select images"), 121);
+            }
+        });
+
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+
+        bottomNavigationView.setSelectedItemId(R.id.home);
+
+        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch(item.getItemId()) {
+                    case R.id.home:
+                        return true;
+
+                    case R.id.tutorial:
+                        startActivity(new Intent(getApplicationContext(),Tutorial.class));
+                        overridePendingTransition(0,0);
+                        return true;
+
+                    case R.id.aboutus:
+                        startActivity(new Intent(getApplicationContext(),AboutUs.class));
+                        overridePendingTransition(0,0);
+                        return true;
+                }
+                return false;
             }
         });
 
@@ -180,6 +208,7 @@ public class HomeActivity extends AppCompatActivity {
             }
         }
 
+        //convert to pdf
         if (requestCode == 120 && resultCode == RESULT_OK && data!=null) {
             Uri selectedImageUri = data.getData();
             String[] filePath = {MediaStore.Images.Media.DATA};
