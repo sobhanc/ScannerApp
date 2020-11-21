@@ -13,12 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/imagePost"
-            android:layout_width="224dp"
-            android:layout_height="211dp"
-            android:layout_centerHorizontal="true"
-            tools:srcCompat="@tools:sample/avatars" />
 
         <ImageView
             android:layout_width="wrap_content"
@@ -26,6 +20,13 @@
             android:layout_centerHorizontal="true"
             android:layout_marginTop="90dp"
             app:srcCompat="@drawable/logo" />
+
+        <ImageView
+            android:id="@+id/imagePost"
+            android:layout_width="224dp"
+            android:layout_height="211dp"
+            android:layout_centerHorizontal="true"
+            tools:srcCompat="@tools:sample/avatars" />
 
     </RelativeLayout>
 
@@ -36,8 +37,6 @@
         android:scrollbars="vertical"
         android:textAlignment="center"
         android:layout_gravity="center_horizontal"/>
-
-
 
 
     <Button
@@ -81,18 +80,18 @@
         android:orientation="horizontal"
         android:layout_marginTop="30dp"
         android:layout_marginBottom="30dp"
+        android:gravity="center"
         >
 
         <Button
             android:id="@+id/button"
             android:layout_width="109dp"
             android:layout_height="48dp"
-            android:layout_marginStart="95dp"
             android:width="100dp"
             android:background="@drawable/login_button4"
             android:onClick="openCamera"
             android:textColor="#ffffff"
-            android:drawableLeft="@drawable/camera_icon_white"
+            android:drawableStart="@drawable/camera_icon_white"
             android:paddingStart="15dp"
             android:paddingEnd="10dp"
             android:paddingBottom="4dp"
@@ -105,7 +104,7 @@
             android:onClick="openGallery"
             android:background="@drawable/login_button4"
             android:textColor="#ffffff"
-            android:drawableLeft="@drawable/gallery_icon_white"
+            android:drawableStart="@drawable/gallery_icon_white"
             android:paddingStart="15dp"
             android:paddingEnd="10dp"
             android:paddingBottom="4dp"
@@ -114,27 +113,37 @@
 
         <Button
             android:id="@+id/button3"
-            android:layout_width="25dp"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="4dp"
-            android:layout_marginStart="10dp"
-            android:background="@android:color/transparent"
-            android:drawableStart="@drawable/share_icon_black"
-            />
+            android:layout_width="80dp"
+            android:layout_height="48dp"
+
+            android:background="@drawable/login_button4"
+            android:drawableStart="@drawable/share_icon_white"
+            android:paddingStart="7dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="4dp"
+            android:text="Share"
+            android:textColor="#ffffff" />
 
 
     </LinearLayout>
-
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
-        android:background="@drawable/login_button3"
+        android:background="?android:attr/windowBackground"
         android:paddingBottom="5dp"
-        app:itemIconTint="#ffffff"
-        app:itemTextColor="#ffffff"
-        app:menu="@menu/menu_navigation" />
+        app:itemIconTint="#000000"
+        app:itemTextColor="#000000"
+        app:menu="@menu/menu_navigation"
+        android:layout_alignParentBottom="true"
+
+
+        />
+
+</RelativeLayout>
 
 
 </LinearLayout>
