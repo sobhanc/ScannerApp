@@ -26,10 +26,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
         db = new DatabaseHelper(this);
-        mTextUsername = (EditText)findViewById(R.id.edittext_username);
-        mTextPassword = (EditText)findViewById(R.id.edittext_password);
-        mButtonLogin = (Button)findViewById(R.id.button_login);
-        mTextViewRegister = (TextView)findViewById(R.id.textview_register);
+        mTextUsername = findViewById(R.id.edittext_username);
+        mTextPassword = findViewById(R.id.edittext_password);
+        mButtonLogin = findViewById(R.id.button_login);
+        mTextViewRegister = findViewById(R.id.textview_register);
         mTextViewRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
