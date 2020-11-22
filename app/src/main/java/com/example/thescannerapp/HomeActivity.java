@@ -30,6 +30,9 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -46,8 +49,8 @@ import java.io.IOException;
 import java.util.List;
 
 public class HomeActivity extends AppCompatActivity {
-
-
+    //implement ad
+    private InterstitialAd mInterstitial;
 
 
     @Override
@@ -59,6 +62,11 @@ public class HomeActivity extends AppCompatActivity {
         Button choose;
         TextView result;
         ImageView imageView;
+        mInterstitial=new InterstitialAd(this);
+        mInterstitial.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        AdRequest request= new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
+        mInterstitial.loadAd(request);
+
 
         result = findViewById(R.id.textView);
         imageView = findViewById(R.id.imagePost);
@@ -66,10 +74,15 @@ public class HomeActivity extends AppCompatActivity {
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                //loading the ad
+                if(mInterstitial.isLoaded()){
+                    mInterstitial.show();
+                }
                 Intent i = new Intent();
                 i.setType("image/*");
                 i.setAction(Intent.ACTION_GET_CONTENT);
                 startActivityForResult(Intent.createChooser(i,"select images"), 121);
+
             }
         });
 
