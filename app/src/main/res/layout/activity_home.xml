@@ -36,7 +36,9 @@
         android:layout_height="106dp"
         android:scrollbars="vertical"
         android:textAlignment="center"
-        android:layout_gravity="center_horizontal"/>
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/home_tag_bubble"
+        android:layout_marginTop="5dp"/>
 
 
     <Button
