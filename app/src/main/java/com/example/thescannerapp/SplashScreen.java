@@ -32,8 +32,10 @@ public class SplashScreen extends AppCompatActivity {
         logo=findViewById(R.id.splashScreenLogo);
         textLogo=findViewById(R.id.splashScreenText);
 
+        //load the animations
         logo.setAnimation(topAnim);
         textLogo.setAnimation(bottomAnim);
+        //allow the animation to play before moving into the next activity by 3.5 seconds
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {

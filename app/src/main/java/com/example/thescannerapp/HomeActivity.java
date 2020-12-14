@@ -52,24 +52,26 @@ public class HomeActivity extends AppCompatActivity {
     //implement ad
     private InterstitialAd mInterstitial;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
         //Code for image labeling starts here
+        //Create variables for the home activity
         Button choose;
         TextView result;
         ImageView imageView;
+        //instantiation of interstitialAd and load
         mInterstitial=new InterstitialAd(this);
         mInterstitial.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
         AdRequest request= new AdRequest.Builder().addTestDevice(AdRequest.DEVICE_ID_EMULATOR).build();
         mInterstitial.loadAd(request);
 
-
+        //binding of views
         result = findViewById(R.id.textView);
         imageView = findViewById(R.id.imagePost);
+        //button to Tag the picture
         choose = findViewById(R.id.button5);
         choose.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -78,6 +80,8 @@ public class HomeActivity extends AppCompatActivity {
                 if(mInterstitial.isLoaded()){
                     mInterstitial.show();
                 }
+                //the intent will show new image according to the
+                //image the user chooses
                 Intent i = new Intent();
                 i.setType("image/*");
                 i.setAction(Intent.ACTION_GET_CONTENT);
@@ -86,24 +90,30 @@ public class HomeActivity extends AppCompatActivity {
             }
         });
 
+        //this is the bottom navigation binding
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-
+        //this is the navigation for the home activity
         bottomNavigationView.setSelectedItemId(R.id.home);
-
+        //upon selection the switch will be activated
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch(item.getItemId()) {
                     case R.id.home:
+                        //no action is needed for home
                         return true;
 
                     case R.id.tutorial:
+                        //new intent is activated to the tutorial
                         startActivity(new Intent(getApplicationContext(),Tutorial.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
 
                     case R.id.aboutus:
+                        //new intent is created for the about us
                         startActivity(new Intent(getApplicationContext(),AboutUs.class));
+                        finish();
                         overridePendingTransition(0,0);
                         return true;
                 }
@@ -112,12 +122,16 @@ public class HomeActivity extends AppCompatActivity {
         });
 
     }
-
+    //This is an onClick method
+    //activates when the user wants to pick an image to
+    //convert to PDF
     public void pickImage(View v) {
         Intent myIntent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
         startActivityForResult(myIntent, 120);
     }
-
+    //This is an onClick method that activates upon
+    //the user request to
+    //open the Camera
     public void openCamera(View v) {
         int REQUEST_CODE = 99;
         int preference = ScanConstants.OPEN_CAMERA;
@@ -125,7 +139,8 @@ public class HomeActivity extends AppCompatActivity {
         intent.putExtra(ScanConstants.OPEN_INTENT_PREFERENCE, preference);
         startActivityForResult(intent, REQUEST_CODE);
     }
-
+    //This is an onClick Method that will open
+    //The gallery upon the user pressing the button
     public void openGallery(View v) {
         int REQUEST_CODE = 99;
         int preference = ScanConstants.OPEN_MEDIA;
@@ -137,18 +152,23 @@ public class HomeActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable final Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
+        //This is creation and binding of the
+        //imageview to show the image selected
         final ImageView imageView;
         imageView = findViewById(R.id.imagePost);
+        //This is creation and binding of the
+        //share button
         Button btnShare;
         btnShare = findViewById(R.id.button3);
+        //this textview shows the
+        //tags that are associated with the image
         final TextView result;
         result = findViewById(R.id.textView);
+        //this will clear the tags in the textview
         Button btnClearTxt;
         btnClearTxt = findViewById(R.id.clearText);
         Button btnConvert;
         btnConvert = findViewById(R.id.button4);
-
 
 
         if (requestCode == 99 && resultCode == Activity.RESULT_OK) {

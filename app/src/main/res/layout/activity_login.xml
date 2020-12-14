@@ -10,24 +10,25 @@
     android:background="@drawable/home_background"
     android:gravity="center_horizontal">
 
+
+    <!-- This holds the logo of our app-->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="127dp"
         android:layout_marginTop="100dp"
         app:srcCompat="@drawable/logo"/>
+
+    <!-- This is the title of our app-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/docscan"
+        android:fontFamily="@font/kavoon_regular"
         android:textSize="25sp"
         android:layout_marginBottom="25dp"/>
 
-    <LinearLayout
-        android:gravity="center_horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
-
+    <!-- The  two editTexts below will allow the user
+    to enter both the username and password-->
         <EditText
             android:id="@+id/edittext_username"
             android:layout_width="190dp"
@@ -45,8 +46,9 @@
             android:layout_marginTop="20dp"
             android:drawableLeft="@drawable/password3"
             android:hint="@string/password"/>
-    </LinearLayout>
 
+
+    <!-- The login Button will launch the new activity-->
     <Button
         android:id="@+id/button_login"
         android:layout_width="181dp"
@@ -56,6 +58,9 @@
         android:text="@string/login"
         android:textColor="#ffffff" />
 
+    <!-- The new linear layout will hold the
+    text and an onClick listener for the user to register
+    in a horizontal orientation-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

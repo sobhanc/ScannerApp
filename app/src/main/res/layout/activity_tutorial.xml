@@ -7,12 +7,12 @@
     tools:context=".Tutorial"
     android:background="@drawable/tutorial_background">
 
-
+    <!-- This is the title of the tutorial-->
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tutorial"
+        android:text="@string/tutorial"
         android:textSize="50sp"
         android:fontFamily="@font/librebaskerville_regular"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
@@ -21,7 +21,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.057" />
-
+    <!-- Here we have the bottom navigation of the  tutorial-->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
         android:layout_width="match_parent"
@@ -36,16 +36,16 @@
         app:menu="@menu/menu_navigation"
         />
 
-
+    <!-- These following textViews hold the string for the tutorials-->
     <TextView
         android:id="@+id/textView3"
         android:layout_width="305dp"
         android:layout_height="90dp"
         android:background="@drawable/tutorial_rectangle"
         android:fontFamily="@font/happymonkey_regular"
-        android:paddingLeft="65dp"
+        android:paddingStart="65dp"
         android:paddingTop="6dp"
-        android:text="First use the camera button to take a new picture of a document or use the gallery button to select an image that you have saved in your phone’s gallery."
+        android:text="@string/tutorial_step_one"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
@@ -59,10 +59,11 @@
         android:layout_height="53dp"
         android:layout_marginStart="8dp"
         android:background="@drawable/ldpi"
-        android:paddingLeft="21dp"
+        android:paddingStart="23dp"
         android:paddingTop="4dp"
-        android:text="1"
-        android:textSize="30dp"
+        android:fontFamily="@font/librebaskerville_regular"
+        android:text="@string/one"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView3"
         app:layout_constraintStart_toStartOf="@+id/textView3"
         app:layout_constraintTop_toTopOf="@+id/textView3"
@@ -74,10 +75,10 @@
         android:layout_height="107dp"
         android:background="@drawable/tutorial_rectangle"
         android:fontFamily="@font/happymonkey_regular"
-        android:paddingLeft="17dp"
+        android:paddingStart="17dp"
         android:paddingTop="5dp"
         android:paddingEnd="60dp"
-        android:text="Once you have your image, the app will automatically guide you in the next steps.\nSelect your crop (otherwise use the autocrop)\nSelect your filter before saving it to the app interface. Return to the home screen."
+        android:text="@string/tutorial_step_two"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
@@ -90,9 +91,10 @@
         android:layout_width="56dp"
         android:layout_height="53dp"
         android:background="@drawable/ldpi"
-        android:text="2"
-        android:textSize="30dp"
-        android:paddingLeft="21dp"
+        android:text="@string/two"
+        android:fontFamily="@font/librebaskerville_regular"
+        android:textSize="30sp"
+        android:paddingStart="21dp"
         android:paddingTop="4dp"
         app:layout_constraintBottom_toBottomOf="@+id/textView4"
         app:layout_constraintEnd_toEndOf="@+id/textView4"
@@ -107,12 +109,10 @@
         android:layout_height="114dp"
         android:background="@drawable/tutorial_rectangle"
         android:fontFamily="@font/happymonkey_regular"
-        android:paddingLeft="63dp"
+        android:paddingStart="63dp"
 
         android:paddingTop="5dp"
-        android:text="Image now in the screen, you can:\nConvert to PDF and save the file directly to your phone.\nSelect your image and find tag words relating to your scan.
-\nClear the image tag text from your home screen.\nIn the menu share your image with another app.
-"
+        android:text="@string/tutorial_step_3"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
@@ -125,10 +125,11 @@
         android:layout_width="56dp"
         android:layout_height="53dp"
         android:background="@drawable/ldpi"
-        android:paddingLeft="21dp"
+        android:paddingStart="20dp"
         android:paddingTop="4dp"
-        android:text="3"
-        android:textSize="30dp"
+        android:text="@string/three"
+        android:fontFamily="@font/librebaskerville_regular"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView5"
         app:layout_constraintEnd_toEndOf="@+id/textView5"
         app:layout_constraintHorizontal_bias="0.014"
@@ -142,10 +143,9 @@
         android:layout_height="85dp"
         android:background="@drawable/tutorial_rectangle"
         android:fontFamily="@font/happymonkey_regular"
-        android:paddingLeft="10dp"
-
+        android:paddingStart="10dp"
         android:paddingTop="22dp"
-        android:text="Enjoy your scan!\nThank you for choosing DocScan"
+        android:text="@string/tutorial_step_4"
         app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.854"
@@ -157,10 +157,11 @@
         android:layout_width="56dp"
         android:layout_height="53dp"
         android:background="@drawable/ldpi"
-        android:paddingLeft="21dp"
+        android:paddingStart="21dp"
         android:paddingTop="4dp"
-        android:text="4"
-        android:textSize="30dp"
+        android:text="@string/four"
+        android:fontFamily="@font/librebaskerville_regular"
+        android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="@+id/textView6"
         app:layout_constraintEnd_toEndOf="@+id/textView6"
         app:layout_constraintHorizontal_bias="0.975"

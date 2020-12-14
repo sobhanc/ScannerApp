@@ -1,10 +1,13 @@
 <resources>
     <!-- Base application theme. -->
+    <!-- We updated the style of the app by getting rid of the top action bar-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <!-- another change was the transparent status bar on the top of the screen
+        that blends seamlessly with the app-->
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
