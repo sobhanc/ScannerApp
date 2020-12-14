@@ -8,19 +8,21 @@
     android:orientation="vertical"
     android:gravity="center_horizontal"
     tools:context=".RegisterActivity">
-
+    <!-- logo for the app-->
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="127dp"
         android:layout_marginTop="100dp"
         app:srcCompat="@drawable/logo"/>
+    <!-- the name of the app-->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/docscan"
+        android:fontFamily="@font/kavoon_regular"
         android:textSize="25sp"
         android:layout_marginBottom="25dp"/>
-
+    <!-- these editTexts will hold the strings the the user enters-->
     <EditText
         android:id="@+id/edittext_username"
         android:layout_width="206dp"
@@ -49,7 +51,7 @@
         android:layout_marginTop="20dp"
         android:drawableLeft="@drawable/password3"
         android:hint="@string/confirm_password"/>
-
+    <!-- The register button will -->
     <Button
         android:id="@+id/button_register"
         android:layout_width="181dp"
@@ -58,7 +60,8 @@
         android:background="@drawable/register_button"
         android:text="@string/register"
         android:textColor="#ffffff" />
-
+    <!-- The horizontal linear layout is here to be able to hold text
+    and a onclick listener to launch back the login activity-->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

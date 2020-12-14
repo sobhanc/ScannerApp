@@ -8,7 +8,8 @@
     tools:context=".HomeActivity"
     android:background="@drawable/home_background2"
     android:orientation="vertical">
-
+    <!-- The relative layout will hold the logo and the
+    imageView that will show the user chosen image-->
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -29,7 +30,8 @@
             tools:srcCompat="@tools:sample/avatars" />
 
     </RelativeLayout>
-
+    <!-- Here the user will be able to see the tags
+    that are according to the chosen image-->
     <TextView
         android:id="@+id/textView"
         android:layout_width="275dp"
@@ -40,42 +42,44 @@
         android:background="@drawable/home_tag_bubble"
         android:layout_marginTop="5dp"/>
 
-
+    <!-- This is the convert to PDF button-->
     <Button
         android:id="@+id/button4"
         android:layout_width="140dp"
         android:layout_height="48dp"
         android:width="100dp"
         android:onClick="pickImage"
-        android:text="CONVERT TO PDF"
+        android:text="@string/convert_to_pdf"
         android:background="@drawable/register_button"
         android:textColor="#fffFff"
         android:layout_gravity="center_horizontal"
          />
 
 
-
+    <!-- This is the tag image button-->
     <Button
         android:id="@+id/button5"
         android:layout_width="109dp"
         android:layout_height="48dp"
         android:width="100dp"
-        android:text="TAG IMAGE"
+        android:text="@string/tag_image"
         android:layout_gravity="center_horizontal"
         android:background="@drawable/register_button"
         android:textColor="#ffffff"
          />
+    <!-- This is used to clear the text in the textView holding the tags-->
     <Button
         android:id="@+id/clearText"
         android:layout_width="140dp"
         android:layout_height="48dp"
         android:layout_gravity="center_horizontal"
         android:width="100dp"
-        android:text="Clear Text"
+        android:text="@string/clear_text"
         android:background="@drawable/register_button"
         android:textColor="#ffffff"
         />
 
+    <!-- This is a horizontal Linear layout that is able to hold three buttons-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,7 +88,7 @@
         android:layout_marginBottom="30dp"
         android:gravity="center"
         >
-
+        <!-- The camera button will open the camera-->
         <Button
             android:id="@+id/button"
             android:layout_width="109dp"
@@ -97,8 +101,8 @@
             android:paddingStart="15dp"
             android:paddingEnd="10dp"
             android:paddingBottom="4dp"
-            android:text="Camera" />
-
+            android:text="@string/camera" />
+        <!-- The gallery button will open the gallery -->
         <Button
             android:id="@+id/button2"
             android:layout_width="109dp"
@@ -110,26 +114,28 @@
             android:paddingStart="15dp"
             android:paddingEnd="10dp"
             android:paddingBottom="4dp"
-            android:text="Gallery"
+            android:text="@string/gallery"
             />
 
+        <!-- The share button is able to open the share capabilities of the app-->
         <Button
             android:id="@+id/button3"
             android:layout_width="80dp"
             android:layout_height="48dp"
-
             android:background="@drawable/login_button4"
             android:drawableStart="@drawable/share_icon_white"
             android:paddingStart="7dp"
             android:paddingEnd="10dp"
             android:paddingBottom="4dp"
-            android:text="Share"
+            android:text="@string/share"
             android:textColor="#ffffff" />
 
 
 
     </LinearLayout>
 
+    <!-- The relative layout here is able to hold the bottom
+    navigation of the app-->
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent">
@@ -143,7 +149,6 @@
         app:itemTextColor="#000000"
         app:menu="@menu/menu_navigation"
         android:layout_alignParentBottom="true"
-
         />
 
 </RelativeLayout>
@@ -151,6 +156,3 @@
 
 
 </LinearLayout>
-<!--  app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imagePost"-->

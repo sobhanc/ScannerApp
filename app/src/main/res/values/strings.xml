@@ -8,4 +8,21 @@
     <string name="already_registered">Already Registered?</string>
     <string name="confirm_password">Confirm Password</string>
     <string name="docscan">DocScan</string>
+    <string name="about_us">About Us</string>
+    <string name="about_us_message">We are a team of intrepid programming students in our senior year of college looking to make a lasting impact with our creativity and resolve.\nThis app represents the culmination of our learning of simple Android development and the dedication to making a system that can be useful for everyone.\nWe hope that you find it helpful to your needs, lives up to your expectations, and sincerely thank you for downloading and giving us a chance! \n\n– Sobhan, Dylan, and Miguel</string>
+    <string name="tutorial_step_one">First use the camera button to take a new picture of a document or use the gallery button to select an image that you have saved in your phone’s gallery.</string>
+    <string name="tutorial_step_two">Once you have your image, the app will automatically guide you in the next steps.\nSelect your crop (otherwise use the autocrop)\nSelect your filter before saving it to the app interface. Return to the home screen.</string>
+    <string name="two">2</string>
+    <string name="one">1</string>
+    <string name="tutorial">Tutorial</string>
+    <string name="tutorial_step_3">Image now in the screen, you can:\nConvert to PDF and save the file directly to your phone.\nSelect your image and find tag words relating to your scan. \nClear the image tag text from your home screen.\nIn the menu share your image with another app.</string>
+    <string name="three">3</string>
+    <string name="tutorial_step_4">Enjoy your scan!\nThank you for choosing DocScan</string>
+    <string name="four">4</string>
+    <string name="convert_to_pdf">CONVERT TO PDF</string>
+    <string name="tag_image">TAG IMAGE</string>
+    <string name="clear_text">Clear Text</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="share">Share</string>
 </resources>
